@@ -1,0 +1,37 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'info', 'clear-dir' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
+4 verbose url raw clear-dir
+5 verbose url resolving [ 'https://registry.npmjs.org/', './clear-dir' ]
+6 verbose url resolved https://registry.npmjs.org/clear-dir
+7 info trying registry request attempt 1 at 13:19:35
+8 http GET https://registry.npmjs.org/clear-dir
+9 http 404 https://registry.npmjs.org/clear-dir
+10 silly registry.get cb [ 404,
+10 silly registry.get   { date: 'Tue, 29 Jul 2014 12:19:36 GMT',
+10 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+10 silly registry.get     'content-type': 'application/json',
+10 silly registry.get     'cache-control': 'max-age=0',
+10 silly registry.get     'content-length': '52',
+10 silly registry.get     'accept-ranges': 'bytes',
+10 silly registry.get     via: '1.1 varnish',
+10 silly registry.get     age: '0',
+10 silly registry.get     'x-served-by': 'cache-lo81-LHR',
+10 silly registry.get     'x-cache': 'MISS',
+10 silly registry.get     'x-cache-hits': '0',
+10 silly registry.get     'x-timer': 'S1406636375.718876,VS0,VE371',
+10 silly registry.get     'keep-alive': 'timeout=10, max=50',
+10 silly registry.get     connection: 'Keep-Alive' } ]
+11 error 404 'clear-dir' is not in the npm registry.
+11 error 404 You should bug the author to publish it
+11 error 404
+11 error 404 Note that you can also install from a
+11 error 404 tarball, folder, or http url, or git url.
+12 error System Darwin 13.0.0
+13 error command "node" "/usr/local/bin/npm" "info" "clear-dir"
+14 error cwd /Users/callum.locke/code/empty-dir
+15 error node -v v0.10.29
+16 error npm -v 1.4.14
+17 error code E404
+18 verbose exit [ 1, true ]
