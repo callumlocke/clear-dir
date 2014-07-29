@@ -34,7 +34,7 @@ module.exports = function emptyDir(dir, emptiedCallback, finalCallback) {
           if (code !== 0) err = new Error('rimraf exited with code: ' + code);
 
           if (finalCallback) finalCallback(err);
-          else throw err;
+          else if (err) throw err;
         });
       });
     });
