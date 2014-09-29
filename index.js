@@ -26,7 +26,7 @@ module.exports = function clearDir(dir, emptiedCallback, finalCallback) {
 
         if (err) return;
 
-        process.nextTick(finalCallback);
+        if (finalCallback) process.nextTick(finalCallback);
       });
       
       return;
