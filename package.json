@@ -17,12 +17,12 @@
   },
   "homepage": "https://github.com/callumlocke/empty-dir",
   "devDependencies": {
-    "graceful-fs": "^3.0.2",
-    "chai": "^1.9.1",
-    "mocha": "^1.21.3"
+    "chai": "~1.9.1",
+    "graceful-fs": "~3.0.2",
+    "mocha": "~1.21.4"
   },
   "dependencies": {
-    "rimraf": "^2.2.8",
-    "async": "^0.9.0"
+    "async": "~0.9.0",
+    "rimraf": "~2.2.8"
   }
 }

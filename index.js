@@ -12,14 +12,28 @@ function uniqueId() {
   return startTime + '_' + (id++);
 }
 
-module.exports = function emptyDir(dir, emptiedCallback, finalCallback) {
-  var tempDir = dir + '__FOR_DELETION__' + uniqueId();
+module.exports = function clearDir(dir, emptiedCallback, finalCallback) {
+  var tempDir = dir + '_DELETING_' + uniqueId();
 
-  fs.mkdir(tempDir, function (err) {
-    if (err) throw err;
+  fs.readdir(dir, function (err, files) {
 
-    fs.readdir(dir, function (err, files) {
-      if (err) throw err;
+    if (err) {
+      if (err.code !== 'ENOENT') return emptiedCallback(err);
+
+      // directory doesn't exist; create it and call both callbacks
+      fs.mkdir(dir, function (err) {
+        emptiedCallback(err);
+
+        if (err) return;
+
+        process.nextTick(finalCallback);
+      });
+      
+      return;
+    }
+
+    fs.mkdir(tempDir, function (err) {
+      if (err) return emptiedCallback(err);
 
       async.each(files, function (file, done) {
         fs.rename(path.join(dir, file), path.join(tempDir, file), done);

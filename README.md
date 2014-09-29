@@ -1,26 +1,33 @@
 # clear-dir
 
-For quickly emptying a directory.
+For quickly emptying a directory. Good for clearing out `dist` before rebuilding.
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
 
-This module is optimised for situations where you just want the directory to be empty as soon as possible, and actually deleting the files can wait till later. First it **moves** all the directory's children into a temp directory so it can call your callback immediately, then it resursively deletes everything from the temp dir in a background job.
+
+## how it works
+
+This package is for when you just want a directory to be empty as soon as possible.
+
+First it **moves** all the directory's children into a temp directory (adjacent to the original directory) – this is a fast, non-recursive operation. Then it calls your callback. Then it spawns a new process to recursively delete the temp directory in the background. Finally it calls your second callback, if provided.
 
 
-## Usage 
+## usage
 
-```javascript
+```js
 var clearDir = require('clear-dir');
 
-clearDir(dir, emptiedCallback, finalCallback);
+clearDir(dir, clearedCallback, finalCallback);
 ```
 
 * `dir` – the directory to empty
-* `emptiedCallback` – to be run when the contents have been cleared out of the directory
-* `finalCallback` (optional) – to be run when the contents have been deleted from the temp location
+* `clearedCallback` – function to be run when the contents have been cleared out of the directory
+* `finalCallback` (optional) – function to be run when the contents have been deleted from the temp location
+
+If the `dir` doesn't exist, it will be created (and then both your callbacks fired). This might sound weird, but the point of `clearDest` is to guarantee an empty folder that you can use immediately, so that's what it does.
 
 
-## License
+## license
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
